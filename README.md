@@ -1,4 +1,4 @@
-# AngularFrontendShowcases
+# Angular Frontend Showcases
 Web application to show the UX difference between Angular Material and UI Bootstrap based on SharePoint-hosted Add-In programming model
 
 ## Installation
