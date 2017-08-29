@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="87cc4c55-675d-4fc7-a0c4-2b8225ccf22b" solutionId="87cc4c55-675d-4fc7-a0c4-2b8225ccf22b" resetWebServer="false" title="Data One Angular Frontend Showcases" description="Data One Angular Frontend Showcases" sharePointProductVersion="15.0" name="DataOne.AngularFrontendShowcases" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="e50ed4aa-92ea-4aeb-8b90-ff8c881c5e12" />
+  </features>
+</package>

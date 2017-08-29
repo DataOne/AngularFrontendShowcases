@@ -1,0 +1,272 @@
+﻿
+
+/* one profile */
+
+#hobbys-etc-div {
+    width: 100%;
+}
+
+.contact-tabs {
+    border: 1px solid #e1e1e1;
+}
+
+#contact-grid-list md-grid-list {
+    margin: 8px;
+}
+
+#contact-grid-list md-grid-tile md-grid-tile-footer {
+    background: rgba(84, 84, 84, 0.87);
+}
+
+/* mobile fix */
+#contact-grid-list md-grid-tile figure {
+    min-height: 50px;
+    min-width: 40px;
+}
+#contact-grid-list{
+    min-height: 248px;
+}
+/**/
+
+#contact-grid-list md-grid-tile:hover {
+    opacity: 0.82;
+    cursor: pointer;
+}
+
+#contact-grid-list md-grid-tile:hover md-grid-tile-footer {
+    opacity: 1.0;
+    background-color: rgb(63, 81, 181);
+}
+
+#contact-grid-list md-grid-tile:hover h3 {
+    text-shadow: 0 0 1px black;
+}
+
+#contact-grid-list md-grid-tile md-grid-tile-footer {
+    height: 30%;
+    min-height: 16px;
+}
+
+#contact-grid-list md-grid-tile-footer figcaption {
+    width: 100%;
+}
+
+#contact-grid-list md-grid-tile-footer figcaption h3 {
+    margin: 0;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+#contact-grid-list md-grid-tile img.contact-pictures {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+md-input-container#date-picker {
+    margin-left: -15px;
+    margin-bottom: 8px;
+}
+
+md-input-container#date-picker md-datepicker button.md-datepicker-button {
+    float: none;
+}
+
+md-switch div md-icon.material-icons {
+    margin-right: 16px;
+}
+
+md-switch#robot-switch {
+    margin-right: 15px;
+    padding-top: 6px;
+}
+
+md-input-container input[type="number"] {
+    min-width: 53px;
+}
+
+@media(max-width: 599px) {
+    div div#picture-and-info {
+        min-height: 1px;
+    }
+}
+
+@media (max-width: 1279px) and (-ms-high-contrast: none), (-ms-high-contrast: active) and (max-width: 1279px) {
+    div#profile-div {
+        min-height: 1500px;
+    }
+}
+
+@media (min-width: 1280px) and (-ms-high-contrast: none), (-ms-high-contrast: active) and (min-width: 1280px) {
+    div#profile-first-row {
+        height: 650px;
+    }
+}
+
+div div#picture-and-info {
+    width: 100%;
+    height: 100%;
+}
+
+#about-me-input-container {
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: -30px;
+}
+
+#about-me-input {
+    width: 100%;
+}
+
+#about-me-p {
+    word-break: break-word;
+}
+
+md-card#profile-picture-card {
+    min-width: 234px;
+    width: 500px;
+}
+
+md-card#profile-picture-card > div {
+    overflow: hidden;
+    height: 320px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img.md-card-image {
+    height: auto;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+
+/* all profiles */
+
+#all-profiles-list .disabledButton{
+    background-color: transparent;
+}
+
+@media(max-width: 500px) {
+    #all-profiles-list .too-big-button {
+        min-width: 3em;
+    }
+}
+
+#all-profiles-list p {
+    width: 10%;
+}
+
+.all-profiles-avatar {
+    background-color: #7092bf;
+}
+
+md-tooltip#profile-tooltip {
+    height: auto;
+}
+
+.md-list-item-icon {
+    margin-right: 16px;
+}
+
+
+/* create profile */
+
+div#create-form {
+    min-height: 600px;
+}
+
+div#names-etc {
+    width: 100%;
+}
+
+md-input-container#aboutMe {
+    width: 95%;
+}
+
+div#robot-checkboxes {
+    width: 100%;
+}
+
+md-toolbar div#terms-toolbar {
+    min-height: 64px;
+}
+
+div#terms-of-agreement {
+    max-width: 100%;
+}
+
+#terms-speed-dial md-fab-actions[aria-hidden="true"] {
+    width: 0px;
+}
+
+md-input-container:not(.md-input-invalid) > md-icon {
+    color: rgba(0,0,0,0.54);
+}
+
+md-input-container.md-input-invalid > md-icon {
+    color: rgb(221,44,0);
+}
+
+md-backdrop.md-dialog-backdrop {
+    position: fixed;
+}
+
+
+/* navigation */
+
+#nav-button {
+    position: absolute;
+    right: 0;
+    transition: right 150ms;
+}
+
+#nav-button > button {
+    min-width: 0;
+}
+
+@media(max-width: 380px) {
+    #nav-button {
+        right: -33px;
+    }
+}
+
+.md-button.md-accent:not([disabled]) md-icon.nav-items {
+    font-size: 21px;
+}
+
+.md-button.md-accent:not([disabled]).md-unselected  md-icon.nav-items {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 20px;
+}
+
+
+/* general */
+
+div.md-dialog-container {
+    position: fixed;
+}
+
+div.ng-scope md-toast {
+    top: 100px;
+    right: 3%;
+    position: fixed;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+   md-dialog {
+    padding: 25px !important;
+  }
+}
+
+div#s4-bodyContainer {
+    overflow: hidden;
+    background-color: rgb(250,250,250);
+}
+
+div#s4-workspace {
+    background-color: rgb(250,250,250);
+}

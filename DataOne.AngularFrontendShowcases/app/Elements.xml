@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="app">
+    <File Path="app\app.module.js" Url="app/app.module.js" ReplaceContent="TRUE" />
+    <File Path="app\app.routes.js" Url="app/app.routes.js" ReplaceContent="TRUE" />
+    <File Path="app\oneProfile\oneProfile.controller.js" Url="app/oneProfile/oneProfile.controller.js" ReplaceContent="TRUE" />
+    <File Path="app\oneProfile\oneProfile_Material.html" Url="app/oneProfile/oneProfile_Material.html" ReplaceContent="TRUE" />
+    <File Path="app\createProfile\createProfile_Material.html" Url="app/createProfile/createProfile_Material.html" ReplaceContent="TRUE" />
+    <File Path="app\allProfiles\allProfiles_Material.html" Url="app/allProfiles/allProfiles_Material.html" ReplaceContent="TRUE" />
+    <File Path="app\allProfiles\allProfiles.controller.js" Url="app/allProfiles/allProfiles.controller.js" ReplaceContent="TRUE" />
+    <File Path="app\createProfile\createProfile.controller.js" Url="app/createProfile/createProfile.controller.js" ReplaceContent="TRUE" />
+    <File Path="app\factories\profiles.factory.js" Url="app/factories/profiles.factory.js" ReplaceContent="TRUE" />
+    <File Path="app\layout\navigation.controller.js" Url="app/layout/navigation.controller.js" ReplaceContent="TRUE" />
+    <File Path="app\content\images\person.jpg" Url="app/content/images/person.jpg" ReplaceContent="TRUE" />
+    <File Path="app\content\images\AppIcon.png" Url="app/content/images/AppIcon.png" ReplaceContent="TRUE" />
+    <File Path="app\layout\Default.aspx" Url="app/layout/Default.aspx" ReplaceContent="TRUE" />
+    <File Path="app\content\styles\Material\angular-material.min.css" Url="app/content/styles/Material/angular-material.min.css" ReplaceContent="TRUE" />
+    <File Path="app\content\styles\Material\material-custom.css" Url="app/content/styles/Material/material-custom.css" ReplaceContent="TRUE" />
+    <File Path="app\app.module.variables.js" Url="app/app.module.variables.js" ReplaceContent="TRUE" />
+    <File Path="app\content\styles\sharepoint-override.css" Url="app/content/styles/sharepoint-override.css" ReplaceContent="TRUE" />
+    <File Path="app\factories\notifications.factory.js" Url="app/factories/notifications.factory.js" ReplaceContent="TRUE" />
+    <File Path="app\content\styles\Bootstrap\bootstrap.min.css" Url="app/content/styles/Bootstrap/bootstrap.min.css" ReplaceContent="TRUE" />
+    <File Path="app\content\styles\Bootstrap\bootstrap-theme.min.css" Url="app/content/styles/Bootstrap/bootstrap-theme.min.css" ReplaceContent="TRUE" />
+    <File Path="app\content\styles\fonts\glyphicons-halflings-regular.eot" Url="app/content/styles/fonts/glyphicons-halflings-regular.eot" ReplaceContent="TRUE" />
+    <File Path="app\content\styles\fonts\glyphicons-halflings-regular.svg" Url="app/content/styles/fonts/glyphicons-halflings-regular.svg" ReplaceContent="TRUE" />
+    <File Path="app\content\styles\fonts\glyphicons-halflings-regular.ttf" Url="app/content/styles/fonts/glyphicons-halflings-regular.ttf" ReplaceContent="TRUE" />
+    <File Path="app\content\styles\fonts\glyphicons-halflings-regular.woff" Url="app/content/styles/fonts/glyphicons-halflings-regular.woff" ReplaceContent="TRUE" />
+    <File Path="app\content\styles\fonts\glyphicons-halflings-regular.woff2" Url="app/content/styles/fonts/glyphicons-halflings-regular.woff2" ReplaceContent="TRUE" />
+    <File Path="app\oneProfile\oneProfile_Bootstrap.html" Url="app/oneProfile/oneProfile_Bootstrap.html" ReplaceContent="TRUE" />
+    <File Path="app\content\styles\Bootstrap\bootstrap-custom.css" Url="app/content/styles/Bootstrap/bootstrap-custom.css" ReplaceContent="TRUE" />
+    <File Path="app\layout\navigation_Material.html" Url="app/layout/navigation_Material.html" ReplaceContent="TRUE" />
+    <File Path="app\layout\navigation_Bootstrap.html" Url="app/layout/navigation_Bootstrap.html" ReplaceContent="TRUE" />
+    <File Path="app\createProfile\createProfile_Bootstrap.html" Url="app/createProfile/createProfile_Bootstrap.html" ReplaceContent="TRUE" />
+    <File Path="app\allProfiles\allProfiles_Bootstrap.html" Url="app/allProfiles/allProfiles_Bootstrap.html" ReplaceContent="TRUE" />
+    <File Path="app\factories\notifications.bootstrap.confirm.html" Url="app/factories/notifications.bootstrap.confirm.html" ReplaceContent="TRUE" />
+    <File Path="app\factories\notifications.bootstrap.confirm.controller.js" Url="app/factories/notifications.bootstrap.confirm.controller.js" ReplaceContent="TRUE" />
+    <File Path="app\app.config.js" Url="app/app.config.js" ReplaceContent="TRUE" />
+    <File Path="app\factories\notifications.bootstrap.prompt.html" Url="app/factories/notifications.bootstrap.prompt.html" ReplaceContent="TRUE" />
+    <File Path="app\init.js" Url="app/init.js" ReplaceContent="TRUE" />
+  </Module>
+</Elements>

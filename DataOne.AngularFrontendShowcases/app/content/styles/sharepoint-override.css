@@ -1,0 +1,68 @@
+﻿div#contentRow {
+    overflow-x: auto;
+    overflow-y: visible;
+}
+
+div#contentBox {
+    min-width: 290px;
+}
+
+#termsOfAgreement {
+    height: 190px;
+    overflow-y: scroll;
+}
+
+form#aspnetForm div#siteIcon {
+    display: none;
+}
+
+@media(max-width: 700px) {
+    form#aspnetForm div#s4-ribbonrow {
+        display: none;
+    }
+}
+
+@media(max-width: 570px) {
+    form#aspnetForm div#suiteBarDelta, div#s4-ribbonrow, div.mp-breadcrumb-top {
+        display: none;
+    }
+
+    h1#pageTitle {
+        font-size: 2.0em;
+    }
+}
+
+@media(max-width: 342px){
+    h1#pageTitle {
+        font-size: 1.6em;
+    }
+
+    div#s4-titlerow {
+        margin-bottom: -50px;
+    }
+}
+
+.md-button.md-raised > md-icon.green, .green {
+    color: green;
+}
+
+.md-button.md-raised > md-icon.red, .red {
+    color: red;
+}
+
+.md-button[disabled] md-icon.male, .male {
+    color: #348fde;
+}
+
+.md-button[disabled] md-icon.female, .female {
+    color: #ff8fdf;
+}
+
+#hobbys-etc-div div.full-stretch {
+    max-width: 100%;
+}
+
+.invisible {
+    visibility: hidden;
+    opacity: 0;
+}

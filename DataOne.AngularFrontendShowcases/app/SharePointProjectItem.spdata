@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectItem Type="Microsoft.VisualStudio.SharePoint.Module" DefaultFile="Elements.xml" SupportedTrustLevels="All" SupportedDeploymentScopes="Web, Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
+  <Files>
+    <ProjectItemFile Source="Elements.xml" Target="app\" Type="ElementManifest" />
+    <ProjectItemFile Source="app.module.js" Target="app\" Type="ElementFile" />
+    <ProjectItemFile Source="app.routes.js" Target="app\" Type="ElementFile" />
+    <ProjectItemFile Source="oneProfile\oneProfile.controller.js" Target="app\oneProfile\" Type="ElementFile" />
+    <ProjectItemFile Source="oneProfile\oneProfile_Material.html" Target="app\oneProfile\" Type="ElementFile" />
+    <ProjectItemFile Source="createProfile\createProfile_Material.html" Target="app\createProfile\" Type="ElementFile" />
+    <ProjectItemFile Source="allProfiles\allProfiles_Material.html" Target="app\allProfiles\" Type="ElementFile" />
+    <ProjectItemFile Source="allProfiles\allProfiles.controller.js" Target="app\allProfiles\" Type="ElementFile" />
+    <ProjectItemFile Source="createProfile\createProfile.controller.js" Target="app\createProfile\" Type="ElementFile" />
+    <ProjectItemFile Source="factories\profiles.factory.js" Target="app\factories\" Type="ElementFile" />
+    <ProjectItemFile Source="layout\navigation.controller.js" Target="app\layout\" Type="ElementFile" />
+    <ProjectItemFile Source="content\images\person.jpg" Target="app\content\images\" Type="ElementFile" />
+    <ProjectItemFile Source="content\images\AppIcon.png" Target="app\content\images\" Type="ElementFile" />
+    <ProjectItemFile Source="layout\Default.aspx" Target="app\layout\" Type="ElementFile" />
+    <ProjectItemFile Source="content\styles\Material\angular-material.min.css" Target="app\content\styles\Material\" Type="ElementFile" />
+    <ProjectItemFile Source="content\styles\Material\material-custom.css" Target="app\content\styles\Material\" Type="ElementFile" />
+    <ProjectItemFile Source="app.module.variables.js" Target="app\" Type="ElementFile" />
+    <ProjectItemFile Source="content\styles\sharepoint-override.css" Target="app\content\styles\" Type="ElementFile" />
+    <ProjectItemFile Source="factories\notifications.factory.js" Target="app\factories\" Type="ElementFile" />
+    <ProjectItemFile Source="content\styles\Bootstrap\bootstrap.min.css" Target="app\content\styles\Bootstrap\" Type="ElementFile" />
+    <ProjectItemFile Source="content\styles\Bootstrap\bootstrap-theme.min.css" Target="app\content\styles\Bootstrap\" Type="ElementFile" />
+    <ProjectItemFile Source="content\styles\fonts\glyphicons-halflings-regular.eot" Target="app\content\styles\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="content\styles\fonts\glyphicons-halflings-regular.svg" Target="app\content\styles\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="content\styles\fonts\glyphicons-halflings-regular.ttf" Target="app\content\styles\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="content\styles\fonts\glyphicons-halflings-regular.woff" Target="app\content\styles\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="content\styles\fonts\glyphicons-halflings-regular.woff2" Target="app\content\styles\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="oneProfile\oneProfile_Bootstrap.html" Target="app\oneProfile\" Type="ElementFile" />
+    <ProjectItemFile Source="content\styles\Bootstrap\bootstrap-custom.css" Target="app\content\styles\Bootstrap\" Type="ElementFile" />
+    <ProjectItemFile Source="layout\navigation_Material.html" Target="app\layout\" Type="ElementFile" />
+    <ProjectItemFile Source="layout\navigation_Bootstrap.html" Target="app\layout\" Type="ElementFile" />
+    <ProjectItemFile Source="createProfile\createProfile_Bootstrap.html" Target="app\createProfile\" Type="ElementFile" />
+    <ProjectItemFile Source="allProfiles\allProfiles_Bootstrap.html" Target="app\allProfiles\" Type="ElementFile" />
+    <ProjectItemFile Source="factories\notifications.bootstrap.confirm.html" Target="app\factories\" Type="ElementFile" />
+    <ProjectItemFile Source="factories\notifications.bootstrap.confirm.controller.js" Target="app\factories\" Type="ElementFile" />
+    <ProjectItemFile Source="app.config.js" Target="app\" Type="ElementFile" />
+    <ProjectItemFile Source="factories\notifications.bootstrap.prompt.html" Target="app\factories\" Type="ElementFile" />
+    <ProjectItemFile Source="init.js" Target="app\" Type="ElementFile" />
+  </Files>
+</ProjectItem>

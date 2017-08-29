@@ -1,0 +1,328 @@
+﻿<uib-progressbar ng-show="isLoading" value="100" type="info" class="progress-striped active">laden...</uib-progressbar>
+
+<div ng-hide="isLoading" class="container-fluid" ng-cloak>
+
+  <!-- Kopfleiste -->
+  <div class="content-center space-between">
+    <div>
+      <h1 ng-show="isOwnProfile">Mein Profil</h1>
+      <h1 ng-show="!isOwnProfile">Profil von {{profile.username}}</h1>
+    </div>
+
+    <div class="hidden-xs">
+      <i class="glyphicon glyphicon-user icon-md" ng-show="!profile.isRobot" ng-class="{'male': profile.gender == 'Männlich', 'female': profile.gender == 'Weiblich'}" uib-popover="{{profile.realName}} ist ein Mensch" popover-trigger="'mouseenter'"></i>
+      <i class="glyphicon glyphicon-object-align-vertical icon-md" ng-show="profile.isRobot" ng-class="{'male': profile.gender == 'Männlich', 'female': profile.gender == 'Weiblich'}" uib-popover="{{profile.realName}} ist ein Roboter" popover-trigger="'mouseenter'"></i>
+    </div>
+
+    <div>
+      <button type="button" class="btn btn-primary" ng-click="toggleMode()" ng-show="isOwnProfile && !isEditModeOn">
+        <div class="content-center">
+          <span class="glyphicon glyphicon-cog icon-md"></span>&nbsp;Ändern
+        </div>
+      </button>
+      <button class="btn btn-danger" type="button" ng-click="reset()" ng-show="isOwnProfile && isEditModeOn">
+        <div class="content-center">
+          <span class="glyphicon glyphicon-floppy-remove icon-md"></span>&nbsp;Zurücksetzen
+        </div>
+      </button>
+      <button type="button" class="btn btn-success" ng-click="showConfirm($event)" ng-show="isOwnProfile && isEditModeOn">
+        <div class="content-center">
+          <span class="glyphicon glyphicon-floppy-save icon-md"></span>&nbsp;Speichern
+        </div>
+      </button>
+    </div>
+  </div>
+  <hr />
+
+    <!-- picture and description -->
+
+    <div class="row">
+      <div id="slider-panel" class="panel panel-default col-xs-12 col-sm-6 col-md-3">
+        <div class="panel-heading">
+          <div uib-carousel active="activeSlide" interval="-15000" no-wrap="false">
+            <div uib-slide index="0">
+              <div class="slider-image">
+                <img id="profile-picture" ng-src="{{profile.picture.$1_1 || '../content/images/person.jpg'}}">
+              </div>
+            </div>
+            <div uib-slide index="1">
+              <div class="slider-image">
+                <img ng-src="https://s-media-cache-ak0.pinimg.com/736x/4f/1e/db/4f1edb0c09e732facf65547ec4022074.jpg">
+                <div class="carousel-caption">
+                  <h4>Beispielbild {{slide.id}}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <p ng-show="!isOwnProfile || !isEditModeOn">{{profile.aboutMe}}</p>
+
+          <div class="form-group" ng-show="isOwnProfile && isEditModeOn">
+            <label for="about-me">Über mich</label>
+            <textarea ng-model="profile.aboutMe" maxlength="100" rows="2" id="about-me" class="form-control"></textarea>
+          </div>
+
+          <div ng-show="!isOwnProfile">
+            <button type="button" ng-hide="isContact  || allContactsNotLoaded" ng-click="addContact()" ng-disabled="allContactsNotLoaded" class="btn-block">
+              <span class="center"><i class="glyphicon glyphicon-plus icon-md green"></i>&nbsp;Hinzufügen</span>
+            </button>
+            <button type="button" ng-hide="!isContact || allContactsNotLoaded" ng-click="removeContact()" ng-disabled="allContactsNotLoaded" class="btn-block">
+              <span class="center"><i class="glyphicon glyphicon-minus icon-md red"></i>&nbsp;Entfernen</span>
+            </button>
+          </div>
+
+          <button type="button" class="btn btn-primary btn-block" ng-click="showPrompt(this)" ng-show="isOwnProfile && isEditModeOn">
+            <div class="content-center center">
+              <span class="glyphicon glyphicon-upload icon-md"></span>&nbsp; Bild ändern
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- profil infos -->
+      <div class="row col-xs-6 col-sm-6 col-md-5 col-lg-5 " ng-show="!isOwnProfile || !isEditModeOn">
+        <div class="col-xs-12 col-md-6">
+          <div class="item-padding content-center">
+            <i class="glyphicon glyphicon-user icon-md"></i>&nbsp;{{profile.realName}}
+          </div>
+          <div class="item-padding content-center" ng-show="profile.plz">
+            <i class="glyphicon glyphicon-map-marker icon-md"></i>&nbsp;{{profile.plz}}
+          </div>
+          <div class="item-padding content-center" ng-show="profile.birthday">
+            <i class="glyphicon glyphicon-calendar icon-md"></i>&nbsp;{{profile.formattedBirthday}}
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+          <div class="item-padding content-center" ng-show="profile.size" ng-hide="profile.size == 50">
+            <i class="glyphicon glyphicon-resize-vertical icon-md"></i>&nbsp;{{profile.size}}
+          </div>
+          <div class="item-padding content-center" ng-show="profile.state">
+            <i class="glyphicon glyphicon-globe icon-md"></i>&nbsp;{{profile.state}}
+          </div>
+          <div class="item-padding content-center">
+            <i class="glyphicon glyphicon-object-align-vertical icon-md"></i>&nbsp;
+            <span ng-show="profile.isRobot">Ja</span>
+            <span ng-show="!profile.isRobot">Nein</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- edit view -->
+      <div class="row col-xs-11 col-sm-6 col-md-5 col-lg-5" ng-show="isOwnProfile && isEditModeOn" ng-form="profileForm">
+        <div class="col-xs-12 col-sm-6">
+          <div class="form-group input-group inline-form" ng-class="{'has-error': !profileForm.realName.$valid}">
+            <label for="realName" class="input-group-addon"><i class="glyphicon glyphicon-user icon-fit"></i> Name </label>
+            <input id="realName" name="realName" class="form-control" ng-model="profile.realName" placeholder="Vorname Nachname" ng-required="true" maxlength="30" ng-pattern="/^((?=[^;]).){1,30}$/" />
+            <div class="tooltip-dummy" uib-tooltip="Bitte einen Namen angeben (kein ; erlaubt)!" tooltip-placement="bottom-left" tooltip-is-open="!profileForm.realName.$valid" tooltip-trigger="none">&nbsp;</div>
+          <!--<span>Name</span> (caption) -->
+          </div>
+
+          <div class="form-group input-group inline-form" ng-class="{'has-error': !profileForm.plz.$valid}">
+            <label for="plz" class="input-group-addon"><i class="glyphicon glyphicon-map-marker icon-fit"></i> PLZ </label>
+            <input id="plz" name="plz" class="form-control" ng-model="profile.plz" placeholder="12345" ng-pattern="/^[0-9A-Za-z]{5}$/" maxlength="5" />
+            <div class="tooltip-dummy" uib-tooltip="Bitte eine gültige PLZ angeben!" tooltip-placement="bottom-left" tooltip-is-open="!profileForm.plz.$valid" tooltip-trigger="none">&nbsp;</div>
+          </div>
+
+          <div class="input-group form-group inline-form" ng-class="{'has-error': !profileForm.birthday.$valid || !isValidBirthday}">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default datepicker-btn" ng-click="isDatepickerOpen = true;"><i class="glyphicon glyphicon-calendar icon-fit"></i> Geburtsdatum </button>
+              </span>
+              <input id="birthday-input" name="birthday" ng-focus="isDatepickerOpen = true" class="form-control" uib-datepicker-popup="dd.MM.yyyy" ng-model="profile.birthday" is-open="isDatepickerOpen"
+                     datepicker-options="dateOptions" ng-required="true" close-text="Schließen" current-text="Heute" clear-text="Löschen" on-open-focus="false"
+                     placeholder="31.01.1999" ng-pattern="/^(0[1-9]|[1-2][0-9]|3[01]).(0[1-9]|1[0-2]).[12][0-9]{3}$/" maxlength="10" ng-change="validateBirthday()" />
+            <div class="tooltip-dummy" uib-tooltip="Bitte ein gültiges Geburtsdatum angeben!" tooltip-placement="bottom-left" tooltip-is-open="!profileForm.birthday.$valid || !isValidBirthday" tooltip-trigger="none">&nbsp;</div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+          <div class="form-group input-group inline-form" ng-class="{'has-error': !profileForm.size.$valid}">
+            <label for="size" class="input-group-addon">
+              <i class="glyphicon glyphicon-resize-vertical icon-fit"></i> Größe 
+            </label>
+            <div id="size-slider" class="form-control">
+              <input type="range" min="50" max="260" step="1" ng-model="profile.size" placeholder="180" />
+              <input name="size" type="number" min="50" max="260" id="size" ng-model="profile.numberSize" placeholder="180" />
+            </div>
+            <div class="tooltip-dummy" uib-tooltip="Bitte einen Wert zwischen 50 und 260 angeben!" tooltip-placement="bottom-left" tooltip-is-open="!profileForm.size.$valid" tooltip-trigger="none">&nbsp;</div>
+          <!--<span>Name</span>-->
+          </div>
+
+          <div class="form-group input-group inline-form">
+            <label for="states" class="input-group-addon">
+              <span class="glyphicon glyphicon-globe icon-fit"></span> Bundesland
+            </label>
+            <select id="states" class="form-control">
+              <option ng-repeat="state in states" ng-selected="state == profile.state">{{state}}</option>
+            </select>
+          </div>
+
+          <div class="form-group input-group inline-form">
+            <label for="robot" class="input-group-addon">
+              <span class="glyphicon glyphicon-object-align-vertical icon-fit"></span> Roboter
+            </label>
+            <div id="robot" class="form-control">
+              <div class="inline-form">
+                <input id="ja" type="radio" name="robot" ng-model="profile.isRobot" ng-value="true" />
+                <label for="ja">Ja</label>
+              </div>
+              <div class="inline-form">
+                <input id="nein" type="radio" name="robot" ng-model="profile.isRobot" ng-value="false" />
+                <label for="nein">Nein</label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Favoriten -->
+      <div id="favorites" class="panel panel-primary hidden-xs hidden-sm col-md-3 col-lg-3 col-md-offset-1 col-lg-offset-1" ng-show="profile.contacts.length > 0">
+        <div class="panel-heading">
+          <h4>Favoriten</h4>
+        </div>
+        <div class="panel-body">
+          <uib-tabset id="tabset">
+            <uib-tab ng-repeat="contacts in profile.contacts" index="$index" heading="&nbsp; {{$index+1}} &nbsp;">
+              <div id="def" class="row contact-tab-row">
+                <div class="panel panel-default col-xs-3 contact-tab" ng-click="showProfile(contact.name)" ng-repeat="contact in contacts track by $index" ng-if="$index < 4" ng-class="{'invisible': contact.isDummy}">
+                  <div class="panel-body">
+                    <img onload="" ng-src="{{contact.picture  || '../content/images/person.jpg'}}">
+                  </div>
+                  <div class="panel-heading">
+                    {{contact.name}}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="panel panel-default col-xs-3 contact-tab" ng-click="showProfile(contact.name)" ng-repeat="contact in contacts track by $index" ng-if="$index >= 4 && $index < 8" ng-class="{'invisible': contact.isDummy}">
+                  <div class="panel-body">
+                    <img ng-src="{{contact.picture  || '../content/images/person.jpg'}}">
+                  </div>
+                  <div class="panel-heading">
+                    {{contact.name}}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="panel panel-default col-xs-3 contact-tab" ng-click="showProfile(contact.name)" ng-repeat="contact in contacts track by $index" ng-if="$index >= 8" ng-class="{'invisible': contact.isDummy}">
+                  <div class="panel-body">
+                    <img ng-src="{{contact.picture  || '../content/images/person.jpg'}}">
+                  </div>
+                  <div class="panel-heading">
+                    {{contact.name}}
+                  </div>
+                </div>
+              </div>
+            </uib-tab>
+          </uib-tabset>
+        </div>
+      </div>
+    </div>
+
+    <div ng-show="profile.hobbies.length>0 || isEditModeOn">
+      <h3 class="no-break">Hobbys: </h3>
+      <div class="form-inline no-break">
+        <h3 ng-repeat="hobby in profile.hobbies" class="no-break">
+          <span class="label label-default" ng-style="{background: getColor(hobby)}">
+            <span class="glyphicon glyphicon-tent icon-fit"></span>
+            <span>{{hobby}}</span> <i class="glyphicon glyphicon-remove icon-sm" ng-show="isOwnProfile && isEditModeOn" ng-click="removeHobby(hobby)"></i>
+          </span>
+        </h3>
+        <div class="input-group" ng-show="isOwnProfile && isEditModeOn">
+          <input class="form-control" placeholder="Hobby eingeben..." ng-model="newHobby" ng-keyup="$event.keyCode == 13 && addNewHobby()" uib-typeahead="h for h in hobbies | filter:$viewValue | limitTo:4" />
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="addNewHobby()">
+              <i class="glyphicon glyphicon-plus icon-fit"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr ng-show="profile.hobbies.length>0 || isEditModeOn" />
+
+    <div ng-show="profile.games.length>0 || isEditModeOn">
+      <h3 class="no-break">Spiele: </h3>
+      <div class="form-inline no-break">
+        <h3 ng-repeat="game in profile.games" class="no-break">
+          <span class="label label-default" ng-style="{background: getColor(game)}">
+            <i class="glyphicon glyphicon-king icon-fit"></i> 
+            <span>{{game}}</span> <i class="glyphicon glyphicon-remove icon-sm" ng-show="isOwnProfile && isEditModeOn" ng-click="removeGame(game)"></i>
+          </span>
+        </h3>
+        <div class="input-group" ng-show="isOwnProfile && isEditModeOn">
+          <input class="form-control" placeholder="Spiel eingeben..." ng-model="newGame" ng-keyup="$event.keyCode == 13 && addNewGame()" />
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="addNewGame()">
+              <i class="glyphicon glyphicon-plus icon-fit"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr ng-show="profile.games.length>0 || isEditModeOn" />
+
+    <div ng-show="profile.music.length>0 || isEditModeOn">
+      <h3 class="no-break">Musik: </h3>
+      <div class="form-inline no-break">
+        <h3 ng-repeat="music in profile.music" class="no-break">
+          <span class="label label-default" ng-style="{background: getColor(music)}">
+            <span class="glyphicon glyphicon-music icon-fit"></span>
+            <span>{{music}}</span> <i class="glyphicon glyphicon-remove icon-sm" ng-show="isOwnProfile && isEditModeOn" ng-click="removeMusic(music)"></i>
+          </span>
+        </h3>
+        <div class="input-group" ng-show="isOwnProfile && isEditModeOn">
+          <input class="form-control" placeholder="Genre eingeben..." ng-model="newMusic" ng-keyup="$event.keyCode == 13 && addNewMusic()" />
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="addNewMusic()">
+              <i class="glyphicon glyphicon-plus icon-fit"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <hr ng-show="profile.music.length>0 || isEditModeOn" />
+
+  <div id="favorites" class="panel panel-primary hidden-md hidden-lg" ng-show="profile.contacts.length > 0">
+    <div class="panel-heading">
+      <h4>Favoriten</h4>
+    </div>
+    <div class="panel-body">
+      <uib-tabset id="tabset">
+        <uib-tab ng-repeat="contacts in profile.contacts" index="$index" heading="&nbsp; {{$index+1}} &nbsp;">
+          <div class="row">
+            <div class="panel panel-default col-xs-3 contact-tab" ng-click="showProfile(contact.name)" ng-repeat="contact in contacts track by $index" ng-if="$index < 4" ng-class="{'invisible': contact.isDummy}">
+              <div class="panel-body">
+                <img onload="" ng-src="{{contact.picture  || '../content/images/person.jpg'}}">
+              </div>
+              <div class="panel-heading">
+                {{contact.name}}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="panel panel-default col-xs-3 contact-tab" ng-click="showProfile(contact.name)" ng-repeat="contact in contacts track by $index" ng-if="$index >= 4 && $index < 8" ng-class="{'invisible': contact.isDummy}">
+              <div class="panel-body">
+                <img ng-src="{{contact.picture  || '../content/images/person.jpg'}}">
+              </div>
+              <div class="panel-heading">
+                {{contact.name}}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="panel panel-default col-xs-3 contact-tab" ng-click="showProfile(contact.name)" ng-repeat="contact in contacts track by $index" ng-if="$index >= 8" ng-class="{'invisible': contact.isDummy}">
+              <div class="panel-body">
+                <img ng-src="{{contact.picture  || '../content/images/person.jpg'}}">
+              </div>
+              <div class="panel-heading">
+                {{contact.name}}
+              </div>
+            </div>
+          </div>
+        </uib-tab>
+      </uib-tabset>
+    </div>
+  </div>
+
+</div>

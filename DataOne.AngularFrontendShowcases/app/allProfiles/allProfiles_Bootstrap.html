@@ -1,0 +1,50 @@
+﻿<div class="container-fluid" ng-cloak>
+  <h1>Alle Profile</h1>
+
+  <uib-progressbar ng-show="isLoading" value="100" type="info" class="progress-striped active">laden...</uib-progressbar>
+
+    <table id="all-profiles-table" class="table table-striped table-hover" ng-hide="isLoading">
+      <tr ng-repeat="profile in profiles" ng-click="!areButtonsDisabled && showProfile(profile.username)">
+        <td class="icon-with-button">
+          <span class="hidden-xs hidden-sm">
+            <i class="glyphicon glyphicon-ok icon-md invisible" ng-hide="profile.isContact"><!--Platzhalter--></i>
+            <i class="glyphicon glyphicon-ok icon-md green" ng-show="profile.isContact"></i>
+          </span>
+        </td>
+        <td>
+          <img ng-src="{{profile.picture || '../content/images/person.jpg'}}" class="img-circle all-profiles-avatar" alt="Picture" />
+        </td>
+        <td>
+          <h4>
+            {{profile.realName}}
+            <small>({{profile.username}})</small>
+          </h4>
+        </td>
+        <td class="hidden-xs hidden-sm"><h5>{{profile.state}}</h5></td>
+        <td class="hidden-xs"><h5>{{profile.plz}}</h5></td>
+        <td class="hidden-xs hidden-sm"><h5>{{profile.age}}<span ng-show="profile.age">&nbsp;Jahre</span></h5></td>
+        <td class="hidden-xs hidden-sm"><h5>{{profile.gender}}</h5></td>
+        <td class="icon-with-button">
+          <span class="robot-span">
+            <i class="glyphicon glyphicon-user icon-md" ng-show="!profile.isRobot" ng-class="{'male': profile.gender == 'Männlich', 'female': profile.gender == 'Weiblich'}" uib-tooltip="{{profile.realName}} ist ein Mensch"></i>
+            <i class="glyphicon glyphicon-object-align-vertical icon-md" ng-show="profile.isRobot" ng-class="{'male': profile.gender == 'Männlich', 'female': profile.gender == 'Weiblich'}" uib-tooltip="{{profile.realName}} ist ein Roboter"></i>
+          </span>
+          <button type="button" ng-click="addContact(profile); $event.stopPropagation()" class="btn btn-default" ng-show="!profile.isContact" ng-disabled="areButtonsDisabled">
+            <i class="glyphicon glyphicon-plus green"></i>
+            <span class="hidden-xs">Hinzufügen</span>
+          </button>
+          <button type="button" ng-click="removeContact(profile); $event.stopPropagation()" class="btn btn-default" ng-show="profile.isContact" ng-disabled="areButtonsDisabled">
+            <i class="glyphicon glyphicon-minus red"></i>
+            <span class="hidden-xs">Entfernen &nbsp;</span>
+          </button>
+        </td>
+      </tr>
+    </table>
+
+  <uib-progressbar ng-show="isLoadingMore" value="100" type="info" class="progress-striped active">lade Benutzer...</uib-progressbar>
+
+  <button type="button" class="btn btn-default" ng-click="getMoreProfiles()" ng-show="showMoreButton">
+    <span class="center"><i class="glyphicon glyphicon-option-horizontal icon-md"></i>&nbsp;Mehr</span>
+  </button>
+
+</div>

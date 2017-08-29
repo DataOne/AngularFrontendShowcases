@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D3C5C540-FF17-4E54-A0DA-4371E4BE184A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataOne.AngularFrontendShowcases</RootNamespace>
+    <AssemblyName>DataOne.AngularFrontendShowcases</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetOfficeVersion>15.0</TargetOfficeVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <MinimumOfficeToolsVersion>11.1</MinimumOfficeToolsVersion>
+    <IncludeAssemblyInPackage>False</IncludeAssemblyInPackage>
+    <ProjectMode>SharePointApp</ProjectMode>
+    <AppFeaturePartId>{108daaa3-d19a-4fe2-b65d-b365aff7c3d5}</AppFeaturePartId>
+    <WspPartId>{54e4c3e2-2ec8-4121-8d9e-0038c3ecfc1d}</WspPartId>
+    <WorkflowPartId>{ad9e8796-3b5d-4acb-a098-09e536be9ed5}</WorkflowPartId>
+    <CspkgPartId>{88e0487f-47b0-469b-9567-9183b6ef7eff}</CspkgPartId>
+    <SqlPackagePartId>{4f03cfba-b76b-45bf-9e84-3f1d2a9b11b1}</SqlPackagePartId>
+    <ActiveDeploymentConfiguration>Deploy App for SharePoint</ActiveDeploymentConfiguration>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="app\allProfiles\allProfiles.controller.js" />
+    <Content Include="app\allProfiles\allProfiles_Bootstrap.html" />
+    <Content Include="scripts\angular-ui.router.min.js" />
+    <Content Include="app\app.config.js" />
+    <Content Include="app\app.module.variables.js" />
+    <Content Include="app\app.routes.js" />
+    <None Include="app\content\styles\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="app\content\styles\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="app\content\styles\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="app\content\styles\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="app\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{60dc87e1-36a4-4e6c-9a4c-068984f033ff}</SharePointProjectItemId>
+    </None>
+    <None Include="app\content\UserList\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{09b2ad20-2507-4707-886e-8ee344e376bb}</SharePointProjectItemId>
+    </None>
+    <None Include="app\content\UserList\UserListInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{3333c0a0-efba-4b25-8f5a-3713a8590466}</SharePointProjectItemId>
+    </None>
+    <Content Include="app\app.module.js" />
+    <Content Include="app\content\styles\Bootstrap\bootstrap-custom.css" />
+    <Content Include="app\content\styles\Bootstrap\bootstrap-theme.min.css" />
+    <Content Include="app\content\styles\Bootstrap\bootstrap.min.css" />
+    <Content Include="app\content\styles\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="scripts\ui-bootstrap-tpls-2.5.0.min.js" />
+    <Content Include="app\content\styles\sharepoint-override.css" />
+    <Content Include="app\content\UserList\UserListInstance\Elements.xml" />
+    <Content Include="app\createProfile\createProfile.controller.js" />
+    <Content Include="app\createProfile\createProfile_Bootstrap.html" />
+    <Content Include="app\Elements.xml" />
+    <Content Include="app\factories\notifications.bootstrap.confirm.controller.js" />
+    <Content Include="app\factories\notifications.bootstrap.confirm.html" />
+    <Content Include="app\factories\notifications.bootstrap.prompt.html" />
+    <Content Include="app\factories\notifications.factory.js" />
+    <Content Include="app\factories\profiles.factory.js" />
+    <Content Include="app\layout\navigation_Bootstrap.html" />
+    <Content Include="app\layout\navigation_Material.html" />
+    <Content Include="app\layout\navigation.controller.js" />
+    <Content Include="app\oneProfile\oneProfile_Bootstrap.html" />
+    <Content Include="app\oneProfile\oneProfile.controller.js" />
+    <Content Include="scripts\angular-animate.min.js" />
+    <Content Include="scripts\angular-aria.min.js" />
+    <Content Include="app\content\styles\Material\angular-material.min.css" />
+    <Content Include="scripts\angular-material.min.js" />
+    <Content Include="scripts\angular-messages.min.js" />
+    <Content Include="app\content\UserList\Elements.xml" />
+    <Content Include="app\content\UserList\Schema.xml" />
+    <Content Include="app\content\images\person.jpg" />
+    <Content Include="app\layout\Default.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="scripts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{4f03cfba-b76b-45bf-9e84-3f1d2a9b11b1}</SharePointProjectItemId>
+    </None>
+    <Content Include="app\allProfiles\allProfiles_Material.html" />
+    <Content Include="app\createProfile\createProfile_Material.html" />
+    <Content Include="app\oneProfile\oneProfile_Material.html" />
+    <Content Include="scripts\angular-locale_de-de.js" />
+    <Content Include="scripts\angular.min.js" />
+    <Content Include="scripts\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="app\init.js" />
+    <Content Include="scripts\_references.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\content\styles\Material\material-custom.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\content\images\AppIcon.png">
+      <OpcRelationship>manifest-icon</OpcRelationship>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Package\Package.package">
+      <PackageId>{87cc4c55-675d-4fc7-a0c4-2b8225ccf22b}</PackageId>
+    </None>
+    <None Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </None>
+    <None Include="Features\DataOne.AngularFrontendShowcases.Core\DataOne.AngularFrontendShowcases.Core.feature">
+      <FeatureId>{e50ed4aa-92ea-4aeb-8b90-ff8c881c5e12}</FeatureId>
+    </None>
+    <None Include="Features\DataOne.AngularFrontendShowcases.Core\DataOne.AngularFrontendShowcases.Core.Template.xml">
+      <DependentUpon>DataOne.AngularFrontendShowcases.Core.feature</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <AppManifestFile Include="AppManifest.xml">
+      <SubType>Designer</SubType>
+    </AppManifestFile>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+  <ProjectExtensions />
+</Project>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="Scripts">
+    <File Path="scripts\angular.min.js" Url="scripts/angular.min.js" ReplaceContent="TRUE" />
+    <File Path="scripts\angular-locale_de-de.js" Url="scripts/angular-locale_de-de.js" ReplaceContent="TRUE" />
+    <File Path="scripts\ui-bootstrap-tpls-2.5.0.min.js" Url="scripts/ui-bootstrap-tpls-2.5.0.min.js" ReplaceContent="TRUE" />
+    <File Path="scripts\angular-material.min.js" Url="scripts/angular-material.min.js" ReplaceContent="TRUE" />
+    <File Path="scripts\angular-messages.min.js" Url="scripts/angular-messages.min.js" ReplaceContent="TRUE" />
+    <File Path="scripts\angular-aria.min.js" Url="scripts/angular-aria.min.js" ReplaceContent="TRUE" />
+    <File Path="scripts\angular-animate.min.js" Url="scripts/angular-animate.min.js" ReplaceContent="TRUE" />
+    <File Path="scripts\angular-ui.router.min.js" Url="scripts/angular-ui.router.min.js" ReplaceContent="TRUE" />
+  </Module>
+</Elements>

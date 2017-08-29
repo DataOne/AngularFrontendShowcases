@@ -1,0 +1,131 @@
+﻿<div id="create-form" ng-form="createForm" class="container-fluid">
+
+  <div class="row col-xs-12">
+
+    <div class="col-xs-12 col-sm-12 col-md-8">
+      <div class="row col-xs-12 col-sm-12">
+        <!-- Names -->
+        <div class="form-group input-group inline-form col-xs-12 col-sm-12 col-md-6" ng-class="{'has-error': createForm.username.$touched && !createForm.username.$valid}">
+          <label for="username" class="input-group-addon"><i class="glyphicon glyphicon-user icon-fit"></i> Username *</label>
+          <input id="username" name="username" class="form-control" ng-model="newProfile.username" placeholder="Username" ng-required="true" maxlength="20" ng-pattern="/^((?=[^;]).){1,20}$/" />
+          <div class="tooltip-dummy" uib-tooltip="Bitte einen Benutzernamen angeben (kein ; erlaubt)!" tooltip-placement="bottom-left" tooltip-is-open="createForm.username.$touched && !createForm.username.$valid" tooltip-trigger="'none'">&nbsp;</div>
+        </div>
+
+        <div class="form-group input-group inline-form col-xs-12 col-sm-12 col-md-6" ng-class="{'has-error': createForm.realName.$touched && !createForm.realName.$valid}">
+          <label for="realName" class="input-group-addon"><i class="glyphicon glyphicon-star icon-fit"></i> Name *</label>
+          <input id="realName" name="realName" class="form-control" ng-model="newProfile.realName" placeholder="Vorname Nachname" ng-required="true" maxlength="30" />
+          <div class="tooltip-dummy" uib-tooltip="Bitte einen Namen angeben!" tooltip-placement="bottom-left" tooltip-is-open="createForm.realName.$touched && !createForm.realName.$valid" tooltip-trigger="'none'">&nbsp;</div>
+        </div>
+      </div>
+
+      <div class="row col-xs-12 col-sm-12">
+        <!-- PLZ -->
+        <div class="form-group input-group inline-form col-xs-12 col-sm-12 col-md-6" ng-class="{'has-error': !createForm.plz.$valid}">
+          <label for="plz" class="input-group-addon"><i class="glyphicon glyphicon-map-marker icon-fit"></i> PLZ </label>
+          <input id="plz" name="plz" class="form-control" ng-model="newProfile.plz" placeholder="12345" ng-pattern="/^[0-9A-Za-z]{5}$/" maxlength="5" />
+          <div class="tooltip-dummy" uib-tooltip="Bitte eine gültige PLZ angeben!" tooltip-placement="bottom-left" tooltip-is-open="!createForm.plz.$valid" tooltip-trigger="'none'">&nbsp;</div>
+        </div>
+
+        <!-- date -->
+        <div class="input-group form-group inline-form col-xs-12 col-sm-12 col-md-3" ng-class="{'has-error': createForm.birthday.$touched &&  (!createForm.birthday.$valid || !isValidBirthday)}">
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default datepicker-btn" ng-click="isDatepickerOpen = true;"><i class="glyphicon glyphicon-calendar icon-fit"></i> Geburtsdatum </button>
+          </span>
+          <input name="birthday" id="birthday-input" ng-focus="isDatepickerOpen = true" class="form-control" uib-datepicker-popup="dd.MM.yyyy" ng-model="newProfile.birthday" is-open="isDatepickerOpen"
+                 datepicker-options="dateOptions" close-text="Schließen" current-text="Heute" clear-text="Löschen" on-open-focus="false"
+                 placeholder="31.01.1999" ng-pattern="/^(0[1-9]|[1-2][0-9]|3[01]).(0[1-9]|1[0-2]).[12][0-9]{3}$/" maxlength="10" ng-change="validateBirthday()" />
+          <div class="tooltip-dummy" uib-tooltip="Bitte ein gültiges Geburtsdatum angeben!" tooltip-placement="bottom-left" tooltip-is-open="createForm.birthday.$touched && (!createForm.birthday.$valid || !isValidBirthday)" tooltip-trigger="'none'">&nbsp;</div>
+        </div>
+
+        <!-- gender -->
+        <div class="form-group input-group inline-form col-xs-12 col-sm-12 col-md-3">
+          <label for="gender" class="input-group-addon">
+            <i class="glyphicon glyphicon-heart-empty icon-fit"></i> Geschlecht
+          </label>
+          <select id="gender" class="form-control" ng-model="newProfile.gender">
+            <option value=""></option>
+            <option value="Männlich">Männlich</option>
+            <option value="Weiblich">Weiblich</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- about me -->
+      <div class="row col-xs-12 col-sm-12">
+        <div class="form-group input-group inline-form col-xs-12 col-sm-12 col-md-6">
+          <div class="inline-form">
+            <label for="about-me" class="input-group-addon"><i class="glyphicon glyphicon-list icon-fit"></i> Über mich</label>
+            <textarea ng-model="newProfile.aboutMe" maxlength="100" rows="1" id="about-me" class="form-control"></textarea>
+          </div>
+        </div>
+
+        <!-- robot -->
+        <div class="form-group input-group inline-form col-xs-12 col-sm-12 col-md-6">
+          <label for="robot" class="input-group-addon">
+            <span class="glyphicon glyphicon-object-align-vertical icon-fit"></span> Roboter
+          </label>
+          <div id="robot" class="form-control">
+            <div class="inline-form">
+              <input id="ja" type="radio" name="robot" ng-model="newProfile.isRobot" ng-value="true" />
+              <label for="ja">Ja</label>
+            </div>
+            <div class="inline-form">
+              <input id="nein" type="radio" name="robot" ng-model="newProfile.isRobot" ng-value="false" />
+              <label for="nein">Nein</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row col-xs-2 hidden-xs hidden-sm">
+        <button type="button" ng-click="createProfile()" class="btn btn-default" ng-class="{'btn-info': createForm.$valid}">
+          <span class="glyphicon glyphicon-ok-sign"></span> Erstellen
+        </button>
+      </div>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4">
+      <!-- terms of agreement -->
+      <div id="terms-of-agreement" class="panel panel-default">
+        <div class="panel-body">
+          <uib-accordion>
+            <div uib-accordion-group class="panel-default" is-open="termsOpen">
+              <uib-accordion-heading>
+                <span><i class="glyphicon glyphicon-list-alt icon-fit"></i> Nutzungsbedingungen</span>
+                <div class="btn-group" uib-dropdown is-open="false">
+                  <button ng-click="$event.stopPropagation()" type="button" class="btn btn-default" uib-dropdown-toggle>
+                    <span class="glyphicon glyphicon-menu-hamburger"></span>
+                  </button>
+                  <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                    <li role="menuitem"><a ng-click="saveTerms(); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-save icon-fit"></span> Speichern</a></li>
+                    <li role="menuitem"><a ng-click="printTerms(); $event.stopPropagation()"><span class="glyphicon glyphicon-print icon-fit"></span> Drucken</a></li>
+                    <li role="menuitem"><a ng-click="copyTerms(); $event.stopPropagation()"><span class="glyphicon glyphicon-duplicate icon-fit"></span> Kopieren</a></li>
+                  </ul>
+                </div>
+              </uib-accordion-heading>
+              <div id="termsOfAgreement">
+                <p>1. Lorem ipsum dolor sit amet, ne quod novum mei. Sea omnium invenire mediocrem at, in lobortis conclusionemque nam. Ne deleniti appetere reprimique pro, inani labitur disputationi te sed. At vix sale omnesque, id pro labitur reformidans accommodare, cum labores honestatis eu. Nec quem lucilius in, eam praesent reformidans no. Sed laudem aliquam ne.</p>
+                <p>2. Facete delenit argumentum cum at. Pro rebum nostrum contentiones ad. Mel exerci tritani maiorum at, mea te audire phaedrum, mel et nibh aliquam. Malis causae equidem vel eu. Noster melius vis ea, duis alterum oporteat ea sea. Per cu vide munere fierent.</p>
+                <p>3. Ad sea dolor accusata consequuntur. Sit facete convenire reprehendunt et. Usu cu nonumy dissentiet, mei choro omnes fuisset ad. Te qui docendi accusam efficiantur, doming noster prodesset eam ei. In vel posse movet, ut convenire referrentur eum, ceteros singulis intellegam eu sit.</p>
+                <p>4. Est in vivendum comprehensam conclusionemque, alia cetero iriure no usu, te cibo deterruisset pro. Ludus epicurei quo id, ex cum iudicabit intellegebat. Ex modo deseruisse quo, mel noster menandri sententiae ea, duo et tritani malorum recteque. Nullam suscipit partiendo nec id, indoctum vulputate per ex. Et has enim habemus tibique. Cu latine electram cum, ridens propriae intellegat eu mea.</p>
+                <p>5. Duo at aliquid mnesarchum, nec ne impetus hendrerit. Ius id aeterno debitis atomorum, et sed feugait voluptua, brute tibique no vix. Eos modo esse ex, ei omittam imperdiet pro. Vel assum albucius incorrupte no. Vim viris prompta repudiare ne, vel ut viderer scripserit, dicant appetere argumentum mel ea. Eripuit feugait tincidunt pri ne, cu facilisi molestiae usu.</p>
+                <p>6. Qui utamur tacimates quaestio ad, quod graece omnium ius ut. Pri ut vero debitis interpretaris, qui cu mentitum adipiscing disputationi. Voluptatum mediocritatem quo ut. Fabulas dolorem ei has, quem molestie persequeris et sit.</p>
+              </div>
+            </div>
+          </uib-accordion>
+          <input type="checkbox" id="terms" name="terms" ng-model="newProfile.terms" required />
+          <label for="terms" ng-class="{'has-error': createForm.terms.$touched && !createForm.terms.$valid}">Ich stimme den Nutzungsbedingungen zu. *</label>
+          <div class="tooltip-dummy" uib-tooltip="Bitte den Nutzungsbedingungen zustimmen, um fortzufahren." tooltip-placement="bottom-left" tooltip-is-open="createForm.terms.$touched && !createForm.terms.$valid" tooltip-trigger="'none'">&nbsp;</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row col-xs-2 hidden-md hidden-lg">
+    <button type="button" ng-click="createProfile()" class="btn btn-default" ng-class="{'btn-info': createForm.$valid}">
+      <span class="glyphicon glyphicon-ok-sign"></span> Erstellen
+    </button>
+  </div>
+</div>

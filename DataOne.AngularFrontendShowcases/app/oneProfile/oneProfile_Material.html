@@ -1,0 +1,294 @@
+﻿<md-content layout-padding>
+  <div ng-show="isLoading">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </div>
+  <div ng-hide="isLoading" layout-lg="column" id="profile-div">
+
+    <!-- Kopfleiste -->
+    <div layout="row" layout-align="space-between center">
+      <div layout="row">
+        <h4 class="md-display-1" ng-show="!isOwnProfile">Profil von {{ profile.username }}</h4>
+        <h4 class="md-display-1" ng-show="isOwnProfile">Mein Profil</h4>
+      </div>
+
+      <md-icon ng-show="profile.isRobot" ng-class="{'male': profile.gender == 'Männlich', 'female': profile.gender == 'Weiblich'}" hide-xs>
+        <md-tooltip md-direction="top">{{profile.username}} ist ein Roboter</md-tooltip>
+        android
+      </md-icon>
+      <md-icon ng-show="!profile.isRobot" ng-class="{'male': profile.gender == 'Männlich', 'female': profile.gender == 'Weiblich'}" hide-xs>
+        <md-tooltip md-direction="top">{{profile.username}} ist ein Mensch</md-tooltip>
+        accessibility
+      </md-icon>
+
+      <md-button layout="row" layout-align="center center" ng-click="reset()" ng-show="isOwnProfile && isEditModeOn">
+        <md-icon ng-show="isEditModeOn" class="red">undo</md-icon>
+        Zurücksetzen
+      </md-button>
+      <md-button layout="row" layout-align="center center" ng-click="showConfirm($event)" ng-show="isOwnProfile && isEditModeOn">
+        <md-icon ng-show="isEditModeOn" class="green">done</md-icon>
+        Speichern
+      </md-button>
+      <md-button layout="row" layout-align="center center" ng-click="toggleMode()" ng-show="isOwnProfile && !isEditModeOn">
+        <md-icon>settings</md-icon>
+        Ändern
+      </md-button>
+    </div>
+
+    <md-divider></md-divider>
+
+    <!-- Profil -->
+    <div id="profile-first-row" layout="row" layout-xs="column" layout-sm="column" layout-md="column" layout-xl="row" layout-align="space-between start" layout-align-lg="space-between start" layout-align-xl="space-between start">
+
+      <div layout-xs="column" layout-sm="row" layout-md="row" layout-lg="row" layout-xl="row" layout-align="space-between center" layout-align-xs="start start" layout-align-lg="space-between start" layout-align-xl="space-between start" flex-lg="60" flex-xl="60" class="md-padding" id="picture-and-info">
+        <!-- Bild und Beschreibung -->
+        <md-card id="profile-picture-card" flex-sm="50" flex-md="33" flex-lg flex-xl="20">
+          <div>
+            <img ng-src="{{profile.picture.$1_1 || '../content/images/person.jpg'}}" class="md-card-image" alt="Picture" />
+          </div>
+
+          <md-card-content layout="column">
+            <md-input-container ng-show="isEditModeOn" id="about-me-input-container">
+              <label>Über mich</label>
+              <textarea ng-model="profile.aboutMe" md-maxlength="100" rows="2" id="about-me-input"></textarea>
+            </md-input-container>
+
+            <p ng-show="!isEditModeOn && profile.aboutMe" id="about-me-p" class="md-body-1">
+              {{ profile.aboutMe }}
+            </p>
+          </md-card-content>
+
+          <md-card-actions layout="column" layout-align="start" ng-show="!isOwnProfile">
+            <md-button ng-hide="isContact  || allContactsNotLoaded" ng-click="addContact()" ng-disabled="allContactsNotLoaded">
+              <md-icon class="green">add</md-icon>&nbsp;Hinzufügen
+            </md-button>
+            <md-button ng-hide="!isContact || allContactsNotLoaded" ng-click="removeContact()" ng-disabled="allContactsNotLoaded">
+              <md-icon class="red">remove</md-icon>&nbsp;Entfernen
+            </md-button>
+          </md-card-actions>
+
+          <md-card-actions layout="column" layout-align="start" ng-show="isOwnProfile && isEditModeOn">
+            <md-button ng-click="showPrompt($event)">
+              <md-icon>file_upload</md-icon> Bild ändern
+            </md-button>
+          </md-card-actions>
+        </md-card>
+
+        <!-- normale Ansicht -->
+        <div layout-md="row" layout-gt-md="row" class="" flex-sm="50" flex-md="66" flex-lg="70" flex-xl="60" ng-show="!isEditModeOn">
+          <md-list class="md-padding">
+            <md-list-item class="md-2-line">
+              <md-icon>face</md-icon>
+              <div class="md-list-item-text">
+                <h3>{{ profile.realName }}</h3>
+                <p>Name</p>
+              </div>
+            </md-list-item>
+
+            <md-list-item class="md-2-line" ng-show="profile.plz">
+              <md-icon>place</md-icon>
+              <div class="md-list-item-text">
+                <h3>{{ profile.plz }}</h3>
+                <p>PLZ</p>
+              </div>
+            </md-list-item>
+
+            <md-list-item class="md-2-line" ng-show="profile.size && profile.size != 50">
+              <md-icon>arrow_upward</md-icon>
+              <div class="md-list-item-text">
+                <h3>{{ profile.size }}</h3>
+                <p>Größe</p>
+              </div>
+            </md-list-item>
+          </md-list>
+
+          <md-list class="md-padding" ng-show="!isEditModeOn">
+            <md-list-item class="md-2-line" ng-show="profile.formattedBirthday">
+              <md-icon>today</md-icon>
+              <div class="md-list-item-text">
+                <h3>{{ profile.formattedBirthday }}</h3>
+                <p>Geburtsdatum</p>
+              </div>
+            </md-list-item>
+
+            <md-list-item class="md-2-line" ng-show="profile.state">
+              <md-icon>landscape</md-icon>
+              <div class="md-list-item-text">
+                <h3>{{ profile.state }}</h3>
+                <p>Bundesland</p>
+              </div>
+            </md-list-item>
+
+            <md-list-item class="md-2-line" ng-show="profile.state">
+              <md-icon>
+                <md-icon ng-show="profile.isRobot">android</md-icon>
+                <md-icon ng-show="!profile.isRobot">accessibility</md-icon>
+              </md-icon>
+              <div class="md-list-item-text">
+                <h3>
+                  <span ng-show="profile.isRobot">Ja</span>
+                  <span ng-show="!profile.isRobot">Nein</span>
+                </h3>
+                <p>Roboter</p>
+              </div>
+            </md-list-item>
+          </md-list>
+        </div>
+
+        <!-- Bearbeitungs-Ansicht -->
+        <div class="" ng-show="isEditModeOn" ng-form="profileForm" flex-sm="50" flex-md="66" flex-lg="60" flex-xl="60">
+          <md-input-container class="md-block">
+            <label>Name</label>
+            <md-icon>face</md-icon>
+            <input md-maxlength="30" required="required" name="realName" ng-model="profile.realName" />
+            <div ng-messages="profileForm.realName.$error" role="alert" md-auto-hide="false">
+              <div ng-message="required">Bitte den Namen eingeben.</div>
+            </div>
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <label>PLZ</label>
+            <md-icon>place</md-icon>
+            <input name="postalCode" ng-model="profile.plz" ng-pattern="/^[0-9A-Za-z]{5}$/" md-maxlength="5">
+            <div ng-messages="profileForm.postalCode.$error" role="alert" multiple>
+              <div ng-message="pattern">Bitte eine gültige PLZ angeben.</div>
+            </div>
+          </md-input-container>
+
+          <md-slider-container>
+            <md-icon>arrow_upwards</md-icon>
+            <span>Größe</span>
+            <md-slider min="50" max="260" ng-model="profile.size" ng-show="isEditModeOn" class="md-primary" aria-label="Size"></md-slider>
+            <md-input-container>
+              <input min="50" max="260" type="number" ng-model="profile.size" aria-label="Size" />
+            </md-input-container>
+          </md-slider-container>
+
+          <div layout="row" layout-xs="column" layout-sm="column" layout-xl="column" layout-align="space-between start">
+            <md-switch id="robot-switch" md-invert class="md-primary" ng-model="profile.isRobot">
+              <md-icon>android</md-icon>
+              Roboter
+            </md-switch>
+
+            <md-input-container id="date-picker">
+              <label>Geburtsdatum</label>
+              <md-datepicker ng-model="profile.birthday" md-current-view="year" md-placeholder="Enter birthday" md-max-date="today" md-min-date="minDate"></md-datepicker>
+            </md-input-container>
+
+            <md-input-container>
+              <label>Bundesland</label>
+              <md-icon>landscape</md-icon>
+              <md-select ng-model="profile.state">
+                <md-option><em>None</em></md-option>
+                <md-option ng-repeat="state in states" ng-value="state">{{state}}</md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+        </div>
+      </div>
+
+      <div layout-md="row" layout-xl="row" flex-sm="100" flex-md="100" flex-lg="33" flex-xl="30" id="hobbys-etc-div">
+        <!-- Hobbys etc. -->
+        <div class="md-padding" flex-sm="100" flex-md="65" flex-xl="40" flex-order-xs="3" flex-order-gt-sm="4" flex-order-md="4" flex-order-lg="4" flex-order="3" hide-lg hide-xl ng-class="{'full-stretch': profile.contacts.length <= 0}">
+          <div ng-show="profile.hobbies.length>0 || isEditModeOn">
+            <h5 class="md-headline">Hobbys</h5>
+            <md-chips ng-model="profile.hobbies" md-removable="isEditModeOn" readonly="!isEditModeOn">
+              <md-autocomplete md-selected-item="selectedHobby" md-search-text="searchText" md-items="item in querySearch(searchText)" md-item-text="item" placeholder="Hobby eingeben...">
+                <span md-highlight-text="searchText">{{item}}</span>
+              </md-autocomplete>
+              <md-chip-template>
+                <md-icon ng-style="{color: getColor($chip)}">insert_emoticon</md-icon>
+                <strong>{{$chip}}</strong>
+              </md-chip-template>
+            </md-chips>
+          </div>
+
+          <div ng-show="profile.games.length>0 || isEditModeOn">
+            <h5 class="md-headline">Spiele</h5>
+            <md-chips ng-model="profile.games" md-removable="isEditModeOn" readonly="!isEditModeOn" placeholder="Enter a game..." secondary-placeholder="Spiel eingeben...">
+              <md-chip-template>
+                <md-icon ng-style="{color: getColor($chip)}">games</md-icon>
+                <strong>{{$chip}}</strong>
+              </md-chip-template>
+            </md-chips>
+          </div>
+
+          <div ng-show="profile.music.length>0 || isEditModeOn">
+            <h5 class="md-headline">Musik</h5>
+            <md-chips ng-model="profile.music" md-removable="isEditModeOn" readonly="!isEditModeOn" placeholder="Enter a genre..." secondary-placeholder="Musikgenre eingeben...">
+              <md-chip-template>
+                <md-icon ng-style="{color: getColor($chip)}">audiotrack</md-icon>
+                <strong>{{$chip}}</strong>
+              </md-chip-template>
+            </md-chips>
+          </div>
+        </div>
+
+        <!-- Favoriten -->
+        <div ng-show="profile.contacts.length > 0" flex flex-order-xs="4" flex-order-md="3" flex-order-lg="3" flex-order="4" class="md-padding">
+          <md-toolbar>
+            <div class="md-toolbar-tools">
+              <h5 class="md-headline flex">Favoriten</h5>
+            </div>
+          </md-toolbar>
+
+          <md-tabs md-align-tabs="bottom" class="contact-tabs">
+            <md-tab ng-repeat="contacts in profile.contacts">
+              <md-tab-label>{{$index+1}}</md-tab-label>
+              <md-tab-body>
+                <md-grid-list id="contact-grid-list" md-row-height="fit" md-gutter="2px" md-cols-xs="4" md-cols-sm="6" md-cols-md="3" md-cols-lg="4" md-cols-xl="6">
+                  <md-grid-tile md-colspan="1" md-rowspan="1" ng-repeat="contact in contacts track by $index" ng-click="showProfile(contact.name)" ng-class="{'invisible': contact.isDummy}">
+                      <img class="contact-pictures" ng-src="{{contact.picture  || '../content/images/person.jpg'}}" />
+                      <md-grid-tile-footer><h3>{{contact.name}}</h3></md-grid-tile-footer>
+                  </md-grid-tile>
+                </md-grid-list>
+              </md-tab-body>
+            </md-tab>
+          </md-tabs>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Hobbys for GT-LG view -->
+    <div class="md-padding" layout-xl="row" flex flex-order="4" hide-xs hide-sm hide-md ng-class="{'full-stretch': profile.contacts.length <= 0}">
+      <div flex-xl="33" ng-show="profile.hobbies.length>0 || isEditModeOn" class="md-padding">
+        <h5 class="md-headline">Hobbys</h5>
+        <md-chips ng-model="profile.hobbies" md-removable="isEditModeOn" readonly="!isEditModeOn">
+        <md-autocomplete md-selected-item="selectedHobby" md-search-text="searchText" md-items="item in querySearch(searchText)" md-item-text="item" placeholder="Hobby eingeben...">
+          <span md-highlight-text="searchText">{{item}}</span>
+        </md-autocomplete>
+        <md-chip-template>
+          <md-icon ng-style="{color: getColor($chip)}">insert_emoticon</md-icon>
+          <strong>{{$chip}}</strong>
+        </md-chip-template>
+      </md-chips>
+        <!--<md-chips md-removable="isEditModeOn" readonly="!isEditModeOn">
+          <md-chip ng-repeat="hobby in profile.hobbies" ng-style="{'background-color': getColor(hobby)}">{{hobby}}</md-chip>
+        </md-chips>-->
+      </div>
+
+      <div flex-xl="33" ng-show="profile.games.length>0 || isEditModeOn" class="md-padding flex-33">
+        <h5 class="md-headline">Spiele</h5>
+        <md-chips ng-model="profile.games" md-removable="isEditModeOn" readonly="!isEditModeOn" placeholder="Spiel eingeben..." secondary-placeholder="Spiel eingeben...">
+          <md-chip-template>
+            <md-icon ng-style="{color: getColor($chip)}">games</md-icon>
+            <strong>{{$chip}}</strong>
+          </md-chip-template>
+        </md-chips>
+      </div>
+
+      <div flex-xl="33" ng-show="profile.music.length>0 || isEditModeOn" class="md-padding flex-33">
+        <h5 class="md-headline">Musik</h5>
+        <md-chips ng-model="profile.music" md-removable="isEditModeOn" readonly="!isEditModeOn" placeholder="Musikgenre eingeben..." secondary-placeholder="Musikgenre eingeben...">
+          <md-chip-template>
+            <md-icon ng-style="{color: getColor($chip)}">audiotrack</md-icon>
+            <strong>{{$chip}}</strong>
+          </md-chip-template>
+        </md-chips>
+      </div>
+    </div>
+
+  </div>
+
+</md-content>

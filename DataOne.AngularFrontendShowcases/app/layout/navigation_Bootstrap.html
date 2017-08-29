@@ -1,0 +1,31 @@
+﻿<nav class="navbar navbar-default" role="navigation" id="bootstrap-navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <span class="navbar-brand">Angular Frontend Showcases</span>
+      <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
+      <ul class="nav navbar-nav">
+        <li ng-class="{'active': currentPage == 'user'}">
+          <a href="#!/user" ng-click="removeParams()"><span class="glyphicon glyphicon-user"></span> Profil</a>
+        </li>
+        <li ng-class="{'active': currentPage == 'all'}">
+          <a href="#!/all"><span class="glyphicon glyphicon-list"></span> Alle</a>
+        </li>
+        <li ng-class="{'active': currentPage == 'create'}">
+          <a href="#!/create"><span class="glyphicon glyphicon-certificate"></span> Neu</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <button id="change-framework" type="button" class="btn btn-default navbar-btn" ng-click="toggleFramework()">
+            <span class="glyphicon glyphicon-pencil"></span> Framework wechseln
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

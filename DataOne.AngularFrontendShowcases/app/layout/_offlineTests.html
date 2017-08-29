@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="../../scripts/angular.min.js"></script>
+    <script type="text/javascript" src="../../scripts/angular-route.min.js"></script>
+
+    <!-- Add your CSS styles to the following file -->
+    <link rel="Stylesheet" type="text/css" href="../content/styles/Material/material-custom.css" />
+    <link rel="Stylesheet" type="text/css" href="../content/styles/sharepoint-override.css" />
+
+    <script src="../content/styles/angular-animate.min.js"></script>
+    <script src="../content/styles/angular-aria.min.js"></script>
+    <script src="../content/styles/angular-messages.min.js"></script>
+    <script src="../content/styles/Material/angular-material.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" />
+    <link rel="stylesheet" href="../content/styles/Material/angular-material.min.css" />
+
+    <!-- Add your JavaScript to the following file -->
+    <script type="text/javascript" src="../app.module.js"></script>
+    <script type="text/javascript" src="../app.module.constants.js"></script>
+    <script type="text/javascript" src="../app.routes.js"></script>
+    <script type="text/javascript" src="../factories/profiles.factory.js"></script>
+    <script type="text/javascript" src="../factories/notifications.factory.js"></script>
+    <script type="text/javascript" src="./topnav.controller.js"></script>
+    <script type="text/javascript" src="../allProfiles/allProfiles.controller.js"></script>
+    <script type="text/javascript" src="../createProfile/createProfile.controller.js"></script>
+    <script type="text/javascript" src="../oneProfile/oneProfile.controller.js"></script>
+</head>
+
+<title>
+    Angular Frontend Showcases
+</title>
+
+	<body>
+    <div ng-app="app">
+
+      <div ng-controller="NavigationController" ng-show="isMaterialSelected">
+       <md-content class="md-padding">
+        <md-nav-bar md-selected-nav-item="currentPage" nav-bar-aria-label="navigation links">
+          <md-nav-item md-nav-href="#!/" name="oneProfile" value="Profil">Profil</md-nav-item>
+          <md-nav-item md-nav-href="#!/all" name="allProfiles" value="Alle">Alle</md-nav-item>
+          <md-nav-item md-nav-href="#!/create" name="createProfile" value="Neu Anlegen">Neu Anlegen</md-nav-item>
+        </md-nav-bar>
+       </md-content>
+      </div>
+
+      <div ng-view ng-cloak></div>
+
+    </div>
+	</body>
+	
+</html>

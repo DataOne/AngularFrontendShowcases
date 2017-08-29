@@ -1,0 +1,488 @@
+﻿/* navigation */
+
+@media(max-width: 450px) {
+    nav.navbar div.navbar-header {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+button#change-framework {
+    margin-left: 5px;
+}
+
+
+/* general */
+
+h1#pageTitle {
+    margin-top: 0;
+    display: none;
+}
+
+div#s4-titlerow {
+    margin-bottom: 27px;
+    margin: 0;
+    height: 0;
+    display: none;
+}
+
+@font-face {
+    font-family: test;
+    src: url(glyphicons-halflings-regular.ttf);
+}
+
+.has-error {
+    color: #a94442;
+}
+
+nav#bootstrap-navigation li.active a {
+    background: none;
+    background-color: #fafafa;
+    color: rgb(54,84,155);
+    font-weight: bold;
+}
+
+div.space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+div.center {
+    display: flex;
+    justify-content: center;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+div.row.content-center {
+    align-items: center;
+    display: flex;
+}
+
+.content-center {
+    align-items: center;
+    align-content: center;
+    display: flex;
+}
+
+.glyphicon.icon-md {
+    font-size: 20px;
+}
+
+.glyphicon.icon-fit {
+    font-size: inherit;
+}
+
+.glyphicon.icon-sm {
+    font-size: 85%;
+}
+
+div.panel.panel-default {
+    display: inline-block;
+}
+
+.item-padding {
+    padding-bottom: 18px;
+    padding-top: 18px;
+    padding-left: 25%;
+}
+
+.no-break {
+    display: inline-block;
+    padding-right: 2px;
+}
+
+div.caption {
+    text-align: center;
+    margin-top: -10px;
+}
+
+div.panel {
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 1px;
+}
+
+div.tab-content {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+span.label.label-default {
+    text-shadow: 1px 1px 0 black;
+}
+
+button.btn {
+    background-image: none;
+}
+
+button.btn {
+    margin-bottom: 2px;
+}
+
+.uib-day button.btn-default {
+    min-width: 0;
+}
+
+button.btn-default.btn-info span.text-info {
+    color: #fff;
+}
+
+th > button.btn {
+    min-width: 15px;
+}
+
+ul.uib-datepicker-popup.dropdown-menu {
+    padding: 10px;
+    max-width: 310px;
+    overflow: hidden;
+}
+
+div.has-error ul.uib-datepicker-popup.dropdown-menu {
+    left: 200px !important;
+    transition: left 200ms;
+}
+
+.input-group.inline-form {
+    display: inline-block;
+    padding-bottom: 20px;
+}
+
+    .input-group.inline-form input[uib-datepicker-popup].form-control[type=text],
+    .input-group.inline-form .form-control {
+        border-radius: 4px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        margin-top: -1px;
+    }
+
+    .input-group.inline-form button.datepicker-btn {
+        height: 30px;
+    }
+
+    .input-group.inline-form label.input-group-addon,
+    .input-group.inline-form button.datepicker-btn {
+        border-radius: 4px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border: 1px solid #ccc;
+    }
+
+    .input-group.inline-form button.datepicker-btn, button.btn-block {
+        width: 100%;
+    }
+
+    .input-group.inline-form.has-error button.datepicker-btn {
+        color: #a94442;
+    }
+
+.input-group input[uib-datepicker-popup].form-control[type=text] {
+    border-radius: 4px;
+    border-color: #ccc;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    padding: 6px 12px;
+}
+
+.input-group label.input-group-addon, .input-group button.datepicker-btn {
+    min-width: 125px;
+    text-align: left;
+    background-color: #eee;
+}
+
+#size-slider {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+    #size-slider input[type="range"] {
+        display: inline-block;
+        float: left;
+        margin-right: 10px;
+    }
+
+button.btn-block {
+    width: 100%;
+}
+
+div.space-around, #robot {
+    display: flex;
+    justify-content: space-around;
+}
+
+#robot > div {
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+}
+
+    #robot label, #robot input,
+    #terms-of-agreement label, input[type="checkbox"] {
+        cursor: pointer;
+    }
+
+        #robot input[type=radio],
+        #terms-of-agreement input[type="checkbox"] {
+            width: 17px;
+            height: 17px;
+            margin-top: -4px;
+            margin-left: 10px;
+        }
+
+#uib-toast {
+    position: fixed;
+    z-index: 1001;
+    width: 33.3%;
+    right: calc(2% + 10px);
+    top: 100px;
+    opacity: 0;
+    visibility: hidden;
+    margin-top: -100px;
+    transition: margin-top 200ms ease-out, opacity 300ms ease-out, visibility 300ms;
+}
+
+textarea {
+    resize: none;
+}
+
+/*div[uib-tooltip-popup].tooltip {
+    top: unset !important;
+}*/
+
+div.tooltip-dummy {
+    height: 0;
+    display: table-caption;
+}
+
+
+/* one profile */
+
+#tabset {
+    position: relative;
+}
+
+    #tabset div.row {
+        display: flex;
+        justify-content: space-around;
+    }
+
+#favorites > div.panel-body {
+    padding-bottom: 80px;
+}
+
+#favorites ul.nav-tabs {
+    position: absolute;
+    bottom: -80px;
+    left: -15px;
+    width: 100%;
+    border: none;
+    /*border-top: 1px solid #ddd;*/
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+    #favorites ul.nav-tabs > li {
+        margin-bottom: -10px;
+        border-top: 1px solid #ddd;
+    }
+
+        #favorites ul.nav-tabs > li > a {
+            margin-bottom: 1px;
+            height: 70px;
+        }
+
+        #favorites ul.nav-tabs > li.active > a {
+            border-bottom: none;
+            border-top: 1px solid transparent;
+            border-radius: 0;
+            margin-top: -1px;
+            font-weight: bold;
+            color: #3073ad;
+        }
+
+div.contact-tab:hover {
+    transition: all 400ms;
+    opacity: 0.78;
+    cursor: pointer;
+    border-color: #121279;
+}
+
+div.contact-tab img {
+    height: auto;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+    div.contact-tab img.wide {
+        width: auto;
+        max-height: 100%;
+        min-height: 100%;
+        max-width: initial;
+        min-width: initial;
+    }
+
+div.contact-tab {
+    border-color: #ddd;
+    max-width: 160px;
+}
+
+    div.contact-tab .panel-body {
+        overflow: hidden;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    div.contact-tab .panel-heading,
+    div.contact-tab .panel-body {
+        overflow: hidden;
+        padding: 2px;
+        text-align: center;
+    }
+
+    div.contact-tab .panel-heading {
+        border-radius: 0 0 3px 3px;
+    }
+
+    div.contact-tab:hover .panel-heading {
+        font-weight: bold;
+    }
+
+#slider-panel {
+    max-width: 350px;
+    min-width: 260px;
+    margin-bottom: 15px;
+}
+
+    #slider-panel .carousel-indicators li {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+        #slider-panel .carousel-indicators li.active {
+            background-color: #fff;
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+
+div.slider-image {
+    overflow: hidden;
+    height: 340px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    div.slider-image img {
+        height: auto;
+        max-width: 100%;
+        min-width: 100%;
+    }
+
+        div.slider-image img.wide {
+            width: auto;
+            max-height: 100%;
+            min-height: 100%;
+            max-width: initial;
+            min-width: initial;
+        }
+
+#birthday-input {
+    margin-top: -3px;
+}
+
+/*all profiles*/
+
+table#all-profiles-table td {
+    vertical-align: middle;
+}
+
+    table#all-profiles-table td > i.glyphicon {
+        display: flex;
+        justify-content: center;
+        top: -1px;
+    }
+
+    table#all-profiles-table td > h4 {
+        display: grid;
+    }
+
+    table#all-profiles-table td > h5 {
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    table#all-profiles-table td.icon-with-button:last-child,
+    table#all-profiles-table td.icon-with-button:first-child {
+        width: 1%;
+        white-space: nowrap;
+    }
+
+    table#all-profiles-table td .robot-span {
+        vertical-align: -webkit-baseline-middle;
+        padding: 10px;
+    }
+
+#all-profiles-table .all-profiles-avatar {
+    width: 40px;
+    height: 40px;
+}
+
+@media(max-width: 500px) {
+    #all-profiles-table button {
+        min-width: 3em;
+    }
+}
+
+
+/* create profile */
+
+#create-form {
+    min-height: 500px;
+}
+
+@media(min-width: 992px) {
+    #create-form div.row {
+        white-space: nowrap;
+    }
+}
+
+#create-form div.row p {
+        white-space: normal;
+    }
+
+#terms-of-agreement {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    overflow: hidden;
+}
+
+    #terms-of-agreement .form-control {
+        height: auto;
+    }
+
+    #terms-of-agreement > .panel-body {
+        padding: 0;
+        margin: -1px;
+    }
+
+    #terms-of-agreement, #terms-of-agreement div[uib-accordion-group] {
+        display: block;
+    }
+
+span[uib-accordion-header] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+ul.dropdown-menu[uib-dropdown-menu] {
+    left: unset;
+    right: 0;
+}

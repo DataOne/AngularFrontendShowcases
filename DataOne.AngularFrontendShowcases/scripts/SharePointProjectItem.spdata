@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectItem Type="Microsoft.VisualStudio.SharePoint.Module" DefaultFile="Elements.xml" SupportedTrustLevels="All" SupportedDeploymentScopes="Web, Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
+  <Files>
+    <ProjectItemFile Source="Elements.xml" Target="scripts\" Type="ElementManifest" />
+    <ProjectItemFile Source="angular.min.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-locale_de-de.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="ui-bootstrap-tpls-2.5.0.min.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-material.min.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-messages.min.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-aria.min.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-animate.min.js" Target="scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="angular-ui.router.min.js" Target="scripts\" Type="ElementFile" />
+  </Files>
+</ProjectItem>

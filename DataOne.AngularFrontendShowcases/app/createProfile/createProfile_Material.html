@@ -1,0 +1,135 @@
+﻿<div ng-form="createForm" layout-padding id="create-form">
+  <div layout="row" layout-xs="column" layout-sm="column" layout-align="space-around start">
+
+    <div layout="column" layout-padding flex-gt-sm="66" id="names-etc">
+
+      <!-- Names -->
+      <div layout="row" layout-xs="column" layout-sm="column">
+        <md-input-container flex-gt-sm="50">
+          <label>Benutzername</label>
+          <md-icon>account_circle</md-icon>
+          <input name="username" ng-model="newProfile.username" maxlength="20" required />
+          <div ng-messages="createForm.username.$error" ng-show="createForm.username.$touched">
+            <div ng-message="required">
+              Bitte einen Benutzernamen eingeben (kein ; erlaubt).
+            </div>
+          </div>
+        </md-input-container>
+
+        <md-input-container flex-gt-sm="50" flex-offset-gt-sm="5">
+          <label>Name</label>
+          <md-icon>face</md-icon>
+          <input name="realName" ng-model="newProfile.realName" maxlength="30" required />
+          <div ng-messages="createForm.realName.$error" ng-show="createForm.realName.$touched">
+            <div ng-message="required">
+              Bitte einen Namen angeben.
+            </div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <!-- PLZ, date, gender -->
+      <div layout="row" layout-xs="column" layout-sm="column">
+        <md-input-container flex-gt-sm="50">
+          <label>Postleitzahl</label>
+          <md-icon>place</md-icon>
+          <input name="plz" ng-model="newProfile.plz" placeholder="12345" ng-pattern="/^[0-9A-Za-z]{5}$/" md-maxlength="5">
+          <div ng-messages="createForm.plz.$error" role="alert" multiple>
+            <div ng-message="pattern">Bitte eine gültige PLZ angeben.</div>
+          </div>
+        </md-input-container>
+
+        <!-- date, gender -->
+        <div layout="row" layout-align="space-between start" flex-gt-sm="50" flex-offset-gt-sm="5">
+          <md-input-container id="date-picker">
+            <label>Geburtsdatum</label>
+            <md-datepicker ng-model="newProfile.birthday" md-current-view="year" md-placeholder="Enter birthday" md-max-date="today" md-min-date="minDate"></md-datepicker>
+          </md-input-container>
+
+          <md-input-container flex="70">
+            <label>Geschlecht</label>
+            <md-select ng-model="newProfile.gender">
+              <md-option value=""></md-option>
+              <md-option value="Männlich">Männlich</md-option>
+              <md-option value="Weiblich">Weiblich</md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+      </div>
+
+      <!-- about me, robot -->
+      <div layout="row" layout-xs="column" layout-sm="column" layout-align="start start">
+        <md-input-container class="md-block" id="aboutMe" flex-gt-sm="50">
+          <label>Über mich</label>
+          <md-icon>description</md-icon>
+          <textarea ng-model="newProfile.aboutMe" md-maxlength="100" rows="2"></textarea>
+        </md-input-container>
+
+        <div layout-padding class="md-whiteframe-1dp" flex-offset-gt-sm="5" flex-gt-sm="50" id="robot-checkboxes">
+          <md-radio-group ng-model="newProfile.isRobot">
+            <md-radio-button value="false" class="md-primary">Ich bin kein Roboter</md-radio-button>
+            <md-radio-button value="true" class="md-primary">Ich bin ein Roboter</md-radio-button>
+          </md-radio-group>
+        </div>
+      </div>
+    </div>
+
+    <!-- terms of agreement -->
+    <div id="terms-of-agreement" class="md-whiteframe-4dp" flex-gt-sm="33">
+      <md-toolbar class="md-warn" >
+        <div class="md-toolbar-tools" layout="row" layout-align="space-between center" id="terms-toolbar">
+          <h2 class="md-flex md-truncate">Nutzungsbedingungen</h2>
+
+          <md-fab-speed-dial id="terms-speed-dial" md-open="isSpeedDialOpen" md-direction="left" class="md-scale">
+            <md-fab-trigger>
+              <md-button aria-label="menu" class="md-fab md-warn">
+                <md-icon>menu</md-icon>
+              </md-button>
+            </md-fab-trigger>
+            <md-fab-actions>
+              <md-button aria-label="copy" class="md-fab md-raised md-mini" ng-click="copyTerms()">
+                <md-tooltip>Kopieren</md-tooltip>
+                <md-icon>content_copy</md-icon>
+              </md-button>
+              <md-button aria-label="print" class="md-fab md-raised md-mini" ng-click="printTerms()">
+                <md-tooltip>Drucken</md-tooltip>
+                <md-icon>print</md-icon>
+              </md-button>
+              <md-button aria-label="save" class="md-fab md-raised md-mini" ng-click="saveTerms()">
+                <md-tooltip>Speichern</md-tooltip>
+                <md-icon>save</md-icon>
+              </md-button>
+            </md-fab-actions>
+          </md-fab-speed-dial>
+        </div>
+      </md-toolbar>
+      <md-content flex layout-padding id="termsOfAgreement">
+        <p>1. Lorem ipsum dolor sit amet, ne quod novum mei. Sea omnium invenire mediocrem at, in lobortis conclusionemque nam. Ne deleniti appetere reprimique pro, inani labitur disputationi te sed. At vix sale omnesque, id pro labitur reformidans accommodare, cum labores honestatis eu. Nec quem lucilius in, eam praesent reformidans no. Sed laudem aliquam ne.</p>
+        <p>2. Facete delenit argumentum cum at. Pro rebum nostrum contentiones ad. Mel exerci tritani maiorum at, mea te audire phaedrum, mel et nibh aliquam. Malis causae equidem vel eu. Noster melius vis ea, duis alterum oporteat ea sea. Per cu vide munere fierent.</p>
+        <p>3. Ad sea dolor accusata consequuntur. Sit facete convenire reprehendunt et. Usu cu nonumy dissentiet, mei choro omnes fuisset ad. Te qui docendi accusam efficiantur, doming noster prodesset eam ei. In vel posse movet, ut convenire referrentur eum, ceteros singulis intellegam eu sit.</p>
+        <p>4. Est in vivendum comprehensam conclusionemque, alia cetero iriure no usu, te cibo deterruisset pro. Ludus epicurei quo id, ex cum iudicabit intellegebat. Ex modo deseruisse quo, mel noster menandri sententiae ea, duo et tritani malorum recteque. Nullam suscipit partiendo nec id, indoctum vulputate per ex. Et has enim habemus tibique. Cu latine electram cum, ridens propriae intellegat eu mea.</p>
+        <p>5. Duo at aliquid mnesarchum, nec ne impetus hendrerit. Ius id aeterno debitis atomorum, et sed feugait voluptua, brute tibique no vix. Eos modo esse ex, ei omittam imperdiet pro. Vel assum albucius incorrupte no. Vim viris prompta repudiare ne, vel ut viderer scripserit, dicant appetere argumentum mel ea. Eripuit feugait tincidunt pri ne, cu facilisi molestiae usu.</p>
+        <p>6. Qui utamur tacimates quaestio ad, quod graece omnium ius ut. Pri ut vero debitis interpretaris, qui cu mentitum adipiscing disputationi. Voluptatum mediocritatem quo ut. Fabulas dolorem ei has, quem molestie persequeris et sit.</p>
+      </md-content>
+      <div layout-padding>
+        <md-input-container>
+          <md-checkbox name="terms" class="md-warn" ng-model="newProfile.terms" required>Ich stimme den Nutzungsbedingungen zu. *</md-checkbox>
+          <div ng-messages="createForm.terms.$error" ng-show="createForm.terms.$touched">
+            <div ng-message="required">
+              Zum Anlegen eines neuen Benutzers, muss den Nutzungsbedingungen zugestimmt werden.
+            </div>
+          </div>
+        </md-input-container>
+      </div>
+    </div>
+
+  </div>
+
+  <div>
+    <md-button ng-click="createProfile()">
+      <md-icon>create</md-icon>
+      Erstellen
+    </md-button>
+  </div>
+
+</div>

@@ -1,0 +1,62 @@
+﻿<md-content flex layout-padding>
+  <h4 class="md-display-1">Alle Profile</h4>
+
+  <md-divider></md-divider>
+
+  <md-list id="all-profiles-list">
+    <md-progress-linear md-mode="indeterminate" ng-show="isLoading"></md-progress-linear>
+
+    <md-list-item ng-repeat="profile in profiles" ng-click="showProfile(profile.username)" ng-mouseover="profile.isTooltipVisible = true" ng-mouseleave="profile.isTooltipVisible = false">
+        <div class="md-list-item-icon" hide-xs hide-sm>
+          <md-icon ng-hide="profile.isContact"><!-- Platzhalter --></md-icon>
+          <md-icon class="green" ng-show="profile.isContact">done</md-icon>
+        </div>
+
+        <img ng-src="{{profile.picture || '../content/images/person.jpg'}}" class="md-avatar all-profiles-avatar" alt="Picture" />
+        <p class="md-title md-truncate">
+          {{profile.realName}}<br />
+          <span class="md-caption">({{profile.username}})</span>
+          <md-tooltip md-direction="top" md-visible="profile.isTooltipVisible" id="profile-tooltip">
+            {{profile.realName}}
+            <br />
+            ({{profile.username}})
+          </md-tooltip>
+        </p>
+        <p class="md-body-2" hide-xs hide-sm>{{profile.state}}</p>
+        <p class="md-body-2" hide-xs>{{profile.plz}}</p>
+        <p class="md-body-2" hide-xs hide-sm>
+          {{profile.age}}
+          <span ng-show="profile.age">Jahre</span>
+        </p>
+        <p class="md-body-2" hide-xs hide-sm>{{profile.gender}}</p>
+        <md-button ng-show="profile.isRobot" ng-disabled="true" class="disabledButton" hide-xs>
+          <md-icon ng-class="{'male': profile.gender == 'Männlich', 'female': profile.gender == 'Weiblich'}">
+            <md-tooltip md-direction="top">{{profile.realName}} ist ein Roboter</md-tooltip>
+            android
+          </md-icon>
+        </md-button>
+        <md-button ng-show="!profile.isRobot" ng-disabled="true" class="disabledButton" hide-xs>
+          <md-icon ng-class="{'male': profile.gender == 'Männlich', 'female': profile.gender == 'Weiblich'}">
+            <md-tooltip md-direction="top">{{profile.realName}} ist ein Mensch</md-tooltip>
+            accessibility
+          </md-icon>
+        </md-button>
+        <md-button ng-click="addContact(profile); $event.stopPropagation()" class="md-raised too-big-button" ng-show="!profile.isContact" ng-disabled="areButtonsDisabled">
+          <md-icon class="green">add</md-icon>
+          <span hide-xs>Hinzufügen</span>
+        </md-button>
+        <md-button ng-click="removeContact(profile); $event.stopPropagation()" class="md-raised too-big-button" ng-show="profile.isContact" ng-disabled="areButtonsDisabled">
+          <md-icon class="red">remove</md-icon>
+          <span hide-xs>Entfernen &nbsp;</span>
+        </md-button>
+        {{isContact(profile.username)}}
+    </md-list-item>
+
+    <md-progress-circular md-mode="indeterminate" ng-show="isLoadingMore"></md-progress-circular>
+    
+    <md-button ng-click="getMoreProfiles()" ng-show="showMoreButton">
+      <md-icon>more_horiz</md-icon> Mehr
+    </md-button>
+
+  </md-list>
+</md-content>

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<List xmlns:ows="Microsoft SharePoint" Title="UserList" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/UserList" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
+  <MetaData>
+    <ContentTypes>
+      
+      
+    <ContentType ID="0x010091286031c61e4b42ac6cfec11bbab885" Name="ListFieldsContentType"><FieldRefs><FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" /><FieldRef ID="{00962535-cc90-4518-8be8-fbd8b83d94ac}" Name="UeberMich" /><FieldRef ID="{22522636-fcf0-4d77-94be-ef1659f11bac}" Name="PLZ" /><FieldRef ID="{a3847427-edaa-4891-8a8c-0d4c7698dc2b}" Name="Hobbys" /><FieldRef ID="{6e6439db-114b-471f-9cd0-a8af083d0ace}" Name="Spiele" /><FieldRef ID="{46d96cc7-a113-49ea-9e0e-a16971edf7a0}" Name="Musik" /><FieldRef ID="{C4C7D925-BC1B-4f37-826D-AC49B4FB1BC1}" Name="Birthday" /><FieldRef ID="{ac48bbe9-c755-4dd3-94f9-c93421f30e2e}" Name="Groesse" /><FieldRef ID="{ad43c57a-0a30-4255-8ffe-0deb0646cc99}" Name="Kontakte" /><FieldRef ID="{fb43bf0f-1174-48e9-90e7-9d1565ab778b}" Name="Roboter" /><FieldRef ID="{5791b572-5427-47d2-be50-bb5e6ac0b6f1}" Name="Bundesland" /><FieldRef ID="{23550288-91B5-4e7f-81F9-1A92661C4838}" Name="Gender" /><FieldRef ID="{19b9f6ca-4e8a-4f3e-8ad9-98b7fff3b1cf}" Name="Bild" /><FieldRef ID="{cd66dff9-1cc6-4935-aba0-c275a92d843d}" Name="RealName" /></FieldRefs></ContentType><ContentTypeRef ID="0x01">
+        <Folder TargetName="Item" />
+      </ContentTypeRef><ContentTypeRef ID="0x0120" /></ContentTypes>
+    <Fields>
+      
+    <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="Username" Required="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" /><Field Name="UeberMich" ID="{00962535-cc90-4518-8be8-fbd8b83d94ac}" DisplayName="UeberMich" Type="Note" /><Field Name="PLZ" ID="{22522636-fcf0-4d77-94be-ef1659f11bac}" DisplayName="PLZ" Type="Text" /><Field Name="Hobbys" ID="{a3847427-edaa-4891-8a8c-0d4c7698dc2b}" DisplayName="Hobbys" Type="Note" /><Field Name="Spiele" ID="{6e6439db-114b-471f-9cd0-a8af083d0ace}" DisplayName="Spiele" Type="Note" /><Field Name="Musik" ID="{46d96cc7-a113-49ea-9e0e-a16971edf7a0}" DisplayName="Musik" Type="Note" /><Field ID="{C4C7D925-BC1B-4f37-826D-AC49B4FB1BC1}" Name="Birthday" StaticName="Birthday" SourceID="http://schemas.microsoft.com/sharepoint/v3" DisplayName="$Resources:core,Birthday_OL;" Group="$Resources:core,Person_Event_Columns;" Type="DateTime" Format="DateOnly" Sealed="TRUE" AllowDeletion="TRUE" /><Field Name="Groesse" ID="{ac48bbe9-c755-4dd3-94f9-c93421f30e2e}" DisplayName="Größe" Type="Number" /><Field Name="Kontakte" ID="{ad43c57a-0a30-4255-8ffe-0deb0646cc99}" DisplayName="Kontakte" Type="Note" /><Field Name="Roboter" ID="{fb43bf0f-1174-48e9-90e7-9d1565ab778b}" DisplayName="Roboter" Type="Boolean" /><Field Name="Bundesland" ID="{5791b572-5427-47d2-be50-bb5e6ac0b6f1}" DisplayName="Bundesland" Type="Text" /><Field ID="{23550288-91B5-4e7f-81F9-1A92661C4838}" Name="Gender" StaticName="Gender" SourceID="http://schemas.microsoft.com/sharepoint/v3" DisplayName="$Resources:core,Gender_OL;" Group="$Resources:core,Person_Event_Columns;" Type="Choice" Sealed="TRUE" AllowDeletion="TRUE"><CHOICES><CHOICE>$Resources:core,Male;</CHOICE><CHOICE>$Resources:core,Female;</CHOICE></CHOICES></Field><Field Name="Bild" ID="{19b9f6ca-4e8a-4f3e-8ad9-98b7fff3b1cf}" DisplayName="Bild" Type="URL" /><Field Name="RealName" ID="{cd66dff9-1cc6-4935-aba0-c275a92d843d}" DisplayName="Name" Type="Text" /></Fields>
+    <Views>
+      
+      
+    <View BaseViewID="0" Type="HTML" MobileView="TRUE" TabularView="FALSE">
+        <Toolbar Type="Standard" />
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <ViewFields>
+          
+        <FieldRef Name="LinkTitleNoMenu"></FieldRef></ViewFields>
+        <Query>
+          <OrderBy>
+            
+          <FieldRef Name="Modified" Ascending="FALSE"></FieldRef></OrderBy>
+        </Query>
+        <ParameterBindings>
+          <ParameterBinding Name="AddNewAnnouncement" Location="Resource(wss,addnewitem)" />
+          <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
+          <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_ONET_HOME)" />
+        </ParameterBindings>
+      </View><View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/15/images/generic.png?rev=23" Url="AllItems.aspx" Hidden="TRUE">
+        <Toolbar Type="Standard" />
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <JSLink>clienttemplates.js</JSLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <ViewFields>
+          
+        <FieldRef Name="Bild" /><FieldRef Name="Bundesland" /><FieldRef Name="Birthday" /><FieldRef Name="Gender" /><FieldRef Name="Groesse" /><FieldRef Name="Hobbys" /><FieldRef Name="Kontakte" /><FieldRef Name="Musik" /><FieldRef Name="PLZ" /><FieldRef Name="Roboter" /><FieldRef Name="Spiele" /><FieldRef Name="LinkTitle"></FieldRef><FieldRef Name="UeberMich" /><FieldRef Name="RealName" /></ViewFields>
+        <Query>
+          <OrderBy>
+            
+          <FieldRef Name="ID"></FieldRef></OrderBy>
+        </Query>
+        <ParameterBindings>
+          <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
+          <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_DEFAULT)" />
+        </ParameterBindings>
+      </View></Views>
+    <Forms>
+      <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="NewForm" Url="NewForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+    </Forms>
+  </MetaData>
+</List>
